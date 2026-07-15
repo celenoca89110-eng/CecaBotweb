@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+
+<title>TicketMP Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="user-box">
+
+👤 {{ user.username }}
+
+{% if user.role == "FOUNDER" %}
+
+<span class="badge founder">
+👑 FOUNDER
+</span>
+
+
+{% elif user.role == "ADMIN" %}
+
+<span class="badge admin">
+🛡 ADMIN
+</span>
+
+
+{% else %}
+
+<span class="badge user">
+USER
+</span>
+
+{% endif %}
+
+</div>
+
+<div class="sidebar">
+
+    <h2>⚙ TicketMP</h2>
+
+    <nav>
+        <a href="/">📊 Dashboard</a>
+        <a href="/tickets">🎫 Tickets</a>
+        <a href="/panels">🧩 Panels</a>
+    </nav>
+
+</div>
+
+
+<div class="main">
+
+    <header>
+        <h1>📊 Dashboard TicketMP</h1>
+        <p>Vue générale du système de tickets Discord</p>
+    </header>
+
+
+    <!-- STATISTIQUES -->
+
+    <div class="cards">
+
+        <div class="card">
+            🟢
+            <span>Tickets ouverts</span>
+            <strong>
+                {{ stats.open if stats and stats.open is defined else 0 }}
+            </strong>
+        </div>
+
+
+        <div class="card">
+            🔴
+            <span>Tickets fermés</span>
+            <strong>
+                {{ stats.closed if stats and stats.closed is defined else 0 }}
+            </strong>
+        </div>
+
+
+        <div class="card">
+            🧩
+            <span>Panels actifs</span>
+            <strong>
+                {{ stats.panels if stats and stats.panels is defined else 0 }}
+            </strong>
+        </div>
+
+    </div>
+
+
+
+    <!-- TICKETS -->
+
+    <section class="box">
+
+        <h2>🎫 Tickets enregistrés</h2>
+
+
+        {% if tickets %}
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Utilisateur</th>
+                    <th>Serveur</th>
+                    <th>Salon</th>
+                    <th>Catégorie</th>
+                    <th>Création</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+
+            {% for uid, ticket in tickets.items() %}
+
+            <tr>
+
+                <td>
+                    <strong>{{ uid }}</strong>
+                </td>
+
+
+                <td>
+                    {{ ticket.guild_id or "—" }}
+                </td>
+
+
+                <td>
+                    {{ ticket.channel_id or "—" }}
+                </td>
+
+
+                <td>
+                    {{ ticket.category or "Non définie" }}
+                </td>
+
+
+                <td>
+                    {{ ticket.via or "Dashboard" }}
+                </td>
+
+
+            </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+        {% else %}
+
+            <div class="empty">
+                📭 Aucun ticket trouvé.
+                <br>
+                Le fichier <code>tickets.json</code> est vide.
+            </div>
+
+        {% endif %}
+
+
+    </section>
+
+
+
+
+    <!-- PANELS -->
+
+
+    <section class="box">
+
+        <h2>🧩 Panels Discord</h2>
+
+
+        {% if panels %}
+
+            <p>
+                ✅ 
+                {{ stats.panels }}
+                panel(s) détecté(s).
+            </p>
+
+
+        {% else %}
+
+            <div class="empty">
+                Aucun panel configuré.
+                <br>
+                Crée un panel depuis Discord avec TicketMP.
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</div>
+
+
+</body>
+</html>

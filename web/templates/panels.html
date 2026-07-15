@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Panels — TicketMP Dashboard</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+
+<h2>⚙ TicketMP</h2>
+
+
+<nav>
+
+<a href="/">
+📊 Dashboard
+</a>
+
+
+<a href="/tickets">
+🎫 Tickets
+</a>
+
+
+<a href="/panels" class="active">
+🧩 Panels
+</a>
+
+
+</nav>
+
+
+</div>
+
+
+
+
+<!-- MAIN -->
+
+
+<div class="main">
+
+
+<header>
+
+<h1>
+🧩 Panels Discord
+</h1>
+
+
+<p>
+Gestion des panels TicketMP configurés sur vos serveurs Discord.
+</p>
+
+
+</header>
+
+
+
+
+<section class="box">
+
+
+<h2>
+
+📦 Panels actifs
+
+{% if panels %}
+
+<span class="badge">
+{{ panels|length }}
+</span>
+
+{% endif %}
+
+
+</h2>
+
+
+
+
+{% if panels %}
+
+
+
+{% for guild_id, items in panels.items() %}
+
+
+
+<div class="panel-group">
+
+
+
+<div class="panel-header">
+
+
+<h3>
+
+🏠 Serveur
+
+<code>
+{{ guild_id }}
+</code>
+
+</h3>
+
+
+<span class="status open">
+
+🟢 Actif
+
+</span>
+
+
+</div>
+
+
+
+
+
+{% if items %}
+
+
+
+<div class="cards">
+
+
+
+{% for panel in items %}
+
+
+
+<div class="card panel-card">
+
+
+
+<h3>
+
+🧩 Panel Ticket
+
+</h3>
+
+
+
+
+<p>
+
+<strong>
+📢 Salon
+</strong>
+
+<br>
+
+<code>
+{{ panel.channel_id or "—" }}
+</code>
+
+</p>
+
+
+
+
+
+<p>
+
+<strong>
+📁 Catégorie
+</strong>
+
+<br>
+
+
+{{ panel.category or "Non définie" }}
+
+
+</p>
+
+
+
+
+
+<p>
+
+<strong>
+🏷 Nom du bouton
+</strong>
+
+<br>
+
+
+<span class="tag">
+
+{{ panel.label or "Ticket" }}
+
+</span>
+
+
+</p>
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+{% else %}
+
+
+<div class="empty">
+
+📭 Aucun panel configuré pour ce serveur.
+
+</div>
+
+
+{% endif %}
+
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+
+{% else %}
+
+
+
+<div class="empty">
+
+
+📭 Aucun panel trouvé.
+
+
+<br>
+
+
+Le fichier
+
+<code>
+panels.json
+</code>
+
+est vide.
+
+
+</div>
+
+
+
+{% endif %}
+
+
+
+</section>
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

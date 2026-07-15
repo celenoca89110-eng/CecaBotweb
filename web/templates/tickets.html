@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Tickets — TicketMP Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <h2>⚙ TicketMP</h2>
+
+    <nav>
+
+        <a href="/">
+            📊 Dashboard
+        </a>
+
+        <a href="/tickets" class="active">
+            🎫 Tickets
+        </a>
+
+        <a href="/panels">
+            🧩 Panels
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<!-- CONTENU -->
+
+<div class="main">
+
+
+<header>
+
+    <h1>
+        🎫 Gestion des tickets
+    </h1>
+
+    <p>
+        Liste complète des tickets enregistrés par TicketMP
+    </p>
+
+</header>
+
+
+
+<section class="box">
+
+
+<h2>
+📂 Tickets enregistrés
+
+{% if tickets %}
+<span class="badge">
+{{ tickets|length }}
+</span>
+{% endif %}
+
+</h2>
+
+
+
+
+{% if tickets %}
+
+
+<div class="table-container">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>Utilisateur</th>
+
+<th>Serveur</th>
+
+<th>Salon</th>
+
+<th>Catégorie</th>
+
+<th>Création</th>
+
+<th>Status</th>
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{% for uid, t in tickets.items() %}
+
+
+<tr>
+
+
+<td>
+
+<strong>
+{{ uid }}
+</strong>
+
+</td>
+
+
+
+<td>
+
+<code>
+{{ t.guild_id or "—" }}
+</code>
+
+</td>
+
+
+
+<td>
+
+<code>
+{{ t.channel_id or "—" }}
+</code>
+
+</td>
+
+
+
+<td>
+
+{{ t.category or "Non définie" }}
+
+</td>
+
+
+
+<td>
+
+{{ t.via or "Discord" }}
+
+</td>
+
+
+
+<td>
+
+
+{% if t.closed %}
+
+<span class="status closed">
+🔴 Fermé
+</span>
+
+
+{% else %}
+
+
+<span class="status open">
+🟢 Ouvert
+</span>
+
+
+{% endif %}
+
+
+</td>
+
+
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+{% else %}
+
+
+<div class="empty">
+
+📭 Aucun ticket trouvé.
+
+<br>
+
+Le fichier :
+
+<code>
+tickets.json
+</code>
+
+est vide.
+
+</div>
+
+
+{% endif %}
+
+
+
+</section>
+
+
+</div>
+
+
+
+</body>
+
+</html>

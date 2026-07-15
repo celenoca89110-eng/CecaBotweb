@@ -1,0 +1,132 @@
+{
+    "bot_owner_id": "1112038418629808148",
+    "whitelisted_admins": [
+        "1112038418629808148"
+    ],
+    "disabled_commands": [],
+    "guilds": {
+        "1495229993624801340": {
+            "name": "CecaBot",
+            "ticket": {
+                "category_id": 1498559533205950524,
+                "log_channel_id": 1495229993624801340,
+                "max_open_per_user": 1,
+                "cooldown_seconds": 30
+            },
+            "admin_roles": [
+                1506554910899048448,
+                1506551957291012099,
+                1498559036176728127,
+                1498558066579345421
+            ],
+            "mod_roles": [],
+            "categories": {
+                "support": {
+                    "label": "🛠️ Support",
+                    "emoji": "🛠️"
+                },
+                "autre": {
+                    "label": "❓ Autre",
+                    "emoji": "❓"
+                },
+                "achat": {
+                    "label": "💰 Achat",
+                    "emoji": "💰"
+                }
+            }
+        },
+        "1311035807272013855": {
+            "name": "Serveur de celenoca_ytb",
+            "ticket": {
+                "category_id": 1466806141660041337,
+                "log_channel_id": null,
+                "max_open_per_user": 1,
+                "cooldown_seconds": 30
+            },
+            "admin_roles": [
+                1311035807301238893,
+                1311035807301238891
+            ],
+            "mod_roles": [
+                1311035807301238889
+            ],
+            "categories": {
+                "support": {
+                    "label": "🛠️ Support",
+                    "emoji": "🛠️"
+                }
+            }
+        },
+        "1505913544108019814": {
+            "name": "la feuile des aures",
+            "ticket": {
+                "category_id": 1505921019909636106,
+                "log_channel_id": null,
+                "max_open_per_user": 1,
+                "cooldown_seconds": 30
+            },
+            "admin_roles": [
+                1505916839996162108
+            ],
+            "mod_roles": [],
+            "categories": {
+                "support": {
+                    "label": "🛠️ Support",
+                    "emoji": "🛠️"
+                }
+            }
+        },
+        "1521573541575921684": {
+            "name": "South Block Hustlers",
+            "ticket": {
+                "category_id": 1521577057769750558,
+                "log_channel_id": null,
+                "max_open_per_user": 1,
+                "cooldown_seconds": 30
+            },
+            "logs": {
+                "channel_id": null,
+                "log_commands": false,
+                "log_server_auth": false,
+                "log_errors": false,
+                "log_admin_actions": false
+            },
+            "anti_abuse": {
+                "enabled": true,
+                "cooldown_seconds": 5,
+                "max_actions_per_minute": 10,
+                "anti_spam": true,
+                "audit_logs": false,
+                "block_duration": 45
+            },
+            "admin_roles": [
+                1521582143166484670,
+                1521573541630447917,
+                1521573541605146674
+            ],
+            "mod_roles": [],
+            "categories": {
+                "support": {
+                    "label": "🛠️ Support",
+                    "emoji": "🛠️"
+                }
+            },
+            "arrival_embed_color": "#2ecc71",
+            "departure_embed_color": "#f04747",
+            "arrival_options": {
+                "show_avatar": true,
+                "show_member_count": true,
+                "mention_user": true
+            },
+            "departure_options": {
+                "show_avatar": true,
+                "show_old_name": true,
+                "detailed_mode": false
+            },
+            "join_to_create_channel_id": "1522553897409839144",
+            "temp_voice_category_id": "1521573543308038227",
+            "arrival_channel_id": "1521573542200868872",
+            "departure_channel_id": "1521573542200868873"
+        }
+    }
+}

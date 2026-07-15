@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<title>Serveurs - TicketMP</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body>
+
+
+<div class="main">
+
+
+<h1>
+Bienvenue {{ user.username }}
+</h1>
+
+
+<h2>
+Choisis un serveur
+</h2>
+
+
+
+<div class="cards">
+
+
+{% for guild in guilds %}
+
+
+<div class="card">
+
+
+<h3>
+{{ guild.name }}
+</h3>
+
+
+<p>
+ID :
+{{ guild.id }}
+</p>
+
+
+<a href="/dashboard/{{ guild.id }}">
+<button>
+Configurer
+</button>
+</a>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>
