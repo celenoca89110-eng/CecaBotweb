@@ -7,6 +7,9 @@ import time
 
 import aiohttp
 
+from threading import Thread
+from app import app as flask_app
+
 try:
     from dotenv import load_dotenv
 except ImportError:
@@ -2958,6 +2961,19 @@ def _discord_token_from_env() -> str:
         )
     return token
 
+def run_api():
+    flask_app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 3000))
+    )
 
 if __name__ == "__main__":
-    bot.run(_discord_token_from_env())
+
+    Thread(
+        target=run_api,
+        daemon=True
+    ).start()
+
+    print("🌐 API Flask démarrée")
+
+    bot.run(TOKEN)
